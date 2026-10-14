@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="./assets/logo.png">
+    <!-- <link rel="icon" href="./assets/logo.png"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Spotify - Web Player: Music for everyone</title>
+    <title>SoundScope - Web Player: Music for everyone</title>
 </head>
 <body>
     <div class="main">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="lib-box">
                     <div class="box">
-                        <p class="box-p1">Create your first playlist</p>
+                        <p class="box-p1" id="createPlaylist">Create your first playlist</p>
                         <p class="box-p2">It's easy, we'll help you</p>
                         <button class="badge">Create playlist </button>
                     </div>
@@ -67,6 +67,12 @@
 
 
 
+
+            <section class="song-library" aria-labelledby="songLibraryTitle">
+                <h2 id="songLibraryTitle">Justin Bieber</h2>
+                <p class="song-library-note">Official previews. The progress bar reflects each preview's playable duration.</p>
+                <div id="songList" class="song-list" aria-label="Songs"></div>
+            </section>
 
             <h2>Recently Played</h2>
             <div class="cards-container">
@@ -143,12 +149,10 @@
         </div>
         <div class="music-player">
             <div class="album">
-                <div class="image-block" >
-                    
-                </div>
+                <img class="image-block" id="songCover" alt="">
                 <div class="cont-block">
-                    <h4>dj wala</h4>
-                    <p>playing...... </p>
+                    <h4 id="songTitle">dj wala</h4>
+                    <p><span id="songArtist"></span> · <span id="playbackStatus">Paused</span></p>
                 </div>
                 <div class="plus-button">
                     <i class="fa-solid fa-plus"></i>
@@ -156,16 +160,20 @@
             </div>
             <div class="player">
                 <div class="player-controls">
-                    <img src="./assets/player_icon1.png" alt="" class="player-control-icon">
-                    <img src="./assets/player_icon2.png" alt="" class="player-control-icon">
-                    <img src="./assets/player_icon3.png" alt="" class="player-control-icon" style="opacity: 1; height: 2rem;">
-                    <img src="./assets/player_icon4.png" alt="" class="player-control-icon">
-                    <img src="./assets/player_icon5.png" alt="" class="player-control-icon">
+                    <button type="button" class="player-control-button" id="previousButton" aria-label="Previous song">
+                        <img src="./assets/player_icon2.png" alt="">
+                    </button>
+                    <button type="button" class="player-toggle" id="playPauseButton" aria-label="Play song">
+                        <i class="fa-solid fa-play" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="player-control-button" id="nextButton" aria-label="Next song">
+                        <img src="./assets/player_icon4.png" alt="">
+                    </button>
                 </div>
                 <div class="playback-bar">
                     <span class="curr-time">00:00</span>
-                    <input type="range" min="0" max="100" class="progress-bar" step="1">
-                    <span class="tot-time">3:33</span>
+                    <input type="range" id="seekBar" min="0" max="0" value="0" class="progress-bar" step="0.1" aria-label="Seek through song">
+                    <span class="tot-time" id="totalTime">00:00</span>
                 </div>
             </div>
             <div class="controls">
@@ -176,12 +184,13 @@
                 </div>
                 <div class="range-icons">
                     <i class="fa-solid fa-volume-high"></i>
-                    <input type="range" min="0" max="100" class="progress-bar" step="1" class="special">
+                    <input type="range" id="volumeBar" min="0" max="100" value="100" class="progress-bar special" step="1" aria-label="Volume">
                     
                 </div>
             </div>
         </div>
     </div>
 
+    <script type="module" src="./index.js"></script>
 </body>
 </html>
