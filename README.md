@@ -1,4 +1,4 @@
-# Spotify-clone
+# SoundScope
 
 ## Music player
 
